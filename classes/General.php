@@ -479,5 +479,97 @@ public function getVisitorDetail($detail_id){
          }
      }
 
+     //fetch student excos
+     public function fetchStudentExco(){
+         $output = '';
 
- }//end of class
+         $this->_db->get('chapel_visitors', array('deleted', '=', 0));
+         $sql = "SELECT * FROM studentExcos WHERE deleted = 0 ORDER BY SchoolSession DESC";
+         $this->_db->query($sql);
+         if ($this->_db->count()) {
+             $dat = $this->_db->results();
+
+             $output .= '
+      <table class="table table-striped table-condensed table-hover" id="ShowstudentExeco">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Full Name</th>
+            <th>Office</th>
+            <th>Phone No</th>
+            <th>Department</th>
+            <th>Level</th>
+            <th>Session</th>
+            <th>Action</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+      ';
+             foreach ($dat as $row) {
+                $user = new User($row->user_id);
+                $userFullname = $user->data()->full_name;
+                $userEmail = $user->data()->email;
+                 $userPhone = $user->data()->mobile;
+                 $userDepartment = $user->data()->department;
+                 $userLevel = $user->data()->level;
+
+
+
+                 $output .= '
+            <tr>
+         <td>'.$row->id.'</td>
+         <td>'.$userFullname.'</td>
+         <td>'.$row->office.'</td>
+          <td>'.$userPhone.'</td>
+         <td>'.$userDepartment.'</td>
+         <td>'.$userLevel.'</td>
+         <td>'.$row->SchoolSession.'</td>
+           <td>
+           <a href="detail/member-detail/'.$row->user_id.'" class="btn btn-sm btn-primary"><i class="fa fa-info-circle fa-lg"></i>&nbsp;Member Details</a>
+           
+           </td>
+            </tr>
+            ';
+             }
+
+$output .= '
+        </tbody>
+      </table>';
+
+return  $output;
+}else{
+    return  '<h3 class="text-center text-secondary align-self-center lead">No Data yet</h3>';
+}
+
+
+}
+
+//fetch chapel council executives
+
+    /**
+     * @return Database|null
+     */
+    public function getCouncilExco()
+    {
+        $data = $this->_db->get('councilMembers', array('deleted', '=', 0));
+        if ($data->count()){
+            return $data->results();
+        }else{
+            return false;
+        }
+    }
+
+
+    public function loggedUsers(){
+        $sql = "SELECT * FROM members WHERE last_login > DATE_SUB(NOW(), INTERVAL 5 SECOND)";
+        $data = $this->_db->query($sql);
+        if ($data->count()) {
+            return $data->results();
+        }else{
+            return false;
+        }
+    }
+
+}//end of class

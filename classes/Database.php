@@ -88,6 +88,8 @@ class Database
 
 
           $sql = "INSERT INTO {$table} (`".implode('`, `',$keys)."`)  VALUES ({$values})";
+//            print_r($sql);
+//            die();
           if (!$this->query($sql, $fields)->error()) {
             return true;
           }
@@ -109,7 +111,8 @@ class Database
         }
 
         $sql = "UPDATE {$table} SET {$set} WHERE $selector = $id ";
-
+//          print_r($sql);
+//            die();
         if (!$this->query($sql, $fields)->error()) {
           return true;
         }

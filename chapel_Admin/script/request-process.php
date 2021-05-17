@@ -170,3 +170,34 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetchVisitors') {
     }
 
 }
+
+if (isset($_POST['action']) && $_POST['action'] == 'fetchStudentExco') {
+    $studentExco = 	$general->fetchStudentExco();
+    if ($studentExco){
+         echo  $studentExco;
+    }
+
+}
+
+if (isset($_POST['action']) && $_POST['action'] == 'fetchCouncilExco') {
+    $councileExco = 	$general-> getCouncilExco();
+    if ($councileExco){
+       foreach ($councileExco as $executives){
+           ?>
+           <div class="align-middle m-b-30">
+               <img src="profile/<?=$executives->photo?>" alt="<?=$executives->fullname?>" class="img-radius img-40 align-top m-r-15">
+               <div class="d-inline-block">
+                   <h6><?=$executives->fullname?></h6>
+                   <p class="text-muted m-b-0"><?=$executives->portfolio?></p>
+                   <p class="text-muted m-b-0"><?=$executives->email?></p>
+                   <p class="text-muted m-b-0"><?=$executives->phoneNo?></p>
+
+               </div>
+           </div>
+        <?php
+       }
+    }else{
+        echo '<span class="text-danger text-bold text-uppercase">No Data yet!</span>';
+    }
+
+}

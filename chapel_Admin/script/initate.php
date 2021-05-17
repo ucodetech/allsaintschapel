@@ -1,22 +1,21 @@
 <?php
 require_once '../../core/init.php';
 $general = new General();
-$student = new Student();
 $admin = new Admin();
 
 
 if(isset($_POST['action']) && $_POST['action']== "fetch_data"){
     $output = '';
 
-    $row = $student->loggedUsers();
+    $row = $general->loggedUsers();
 
    if ($row) {
      foreach ($row as $active) {
 
        ?>
-       <div class="col-lg-6">
+       <div class="col-lg-4">
 
-          <img src='../studentPortal/avaters/<?=$active->passport;?>' width='70px' height='70px' style='border-radius:50px;' alt='Passport'>
+          <img src='../chapel_Members/profile/<?=$active->passport;?>' width='70px' height='70px' style='border-radius:50px;' alt='Passport'>
          <br>
          <?
          echo strtok($active->full_name, ' ') . '- ID-' . $active->id ;
@@ -25,6 +24,10 @@ if(isset($_POST['action']) && $_POST['action']== "fetch_data"){
        </div>
        <?
      }
+   }else{
+
+       echo '<span class="text-center">No active Member</span>';
+
    }
 
 

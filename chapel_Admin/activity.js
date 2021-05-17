@@ -21,27 +21,27 @@ update_admin_login();
   }, 1000);
 
 
-//FEcth active users
-// fetch_user_login();
+// FEcth active users
+fetch_user_login();
 
-// setInterval(function(){
-//     fetch_user_login();
-// }, 3000);
-//
-// function fetch_user_login()
-// {
-//     var action = 'fetch_data';
-//     $.ajax({
-//         url:"script/initate.php",
-//         method:"POST",
-//         data:{action:action},
-//         success:function(data)
-//         {
-//             $('#activeUsers').html(data);
-//
-//         },
-//         error:function(){alert("something went wrong fetch user login")}
-//
-//     });
-// }
-//Fetch total users
+setInterval(function(){
+    fetch_user_login();
+}, 1000);
+
+function fetch_user_login()
+{
+    var action = 'fetch_data';
+    $.ajax({
+        url:"script/initate.php",
+        method:"POST",
+        data:{action:action},
+        success:function(data)
+        {
+            console.log(data);
+            $('#showCurrentLoggedInM').html(data);
+
+        },
+        error:function(){alert("something went wrong fetch user login")}
+
+    });
+}

@@ -1,7 +1,7 @@
 <?php
 require_once '../core/init.php';
 if (!isLoggedInMember()){
-    Session::flash('warning', 'You need to login to access that page!');
+    Session::flash('denied', 'You need to login to access that page!');
     Redirect::to('member-login');
 }
 $user = new User();

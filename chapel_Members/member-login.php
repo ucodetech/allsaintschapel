@@ -23,6 +23,19 @@ require APPROOT . '/includes/headpanel1.php';
                             <div class="row m-b-20">
                                 <div class="col-md-12">
                                     <h3 class="text-center">Member Login</h3>
+                                    <hr class="invisible">
+                                    <div class="container">
+                                        <?php
+                                            if (Session::exists('denied')){
+                                                echo '
+                                                    <div class="alert alert-danger alert-dismissible">
+                                                    <button class="close" type="button" data-dismiss="alert">&times;</button>
+                                                    <strong class="text-center">'.Session::flash('denied').'</strong>
+                                                    </div>
+                                                ';
+                                            }
+                                        ?>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group form-primary">

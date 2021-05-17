@@ -44,6 +44,7 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="<?=URLROOT?>assets/css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
 
@@ -56,6 +57,10 @@
         font-family: 'Amaranth', sans-serif;
 
     }
+    .form-group input,.form-group select,.form-group textarea, label{
+        font-size: 1.2rem;
+    }
+
 </style>
 <body>
 <!-- Pre-loader start -->

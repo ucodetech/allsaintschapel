@@ -56,6 +56,10 @@
         font-family: 'Amaranth', sans-serif;
 
     }
+    .form-group input,.form-group select,.form-group textarea, label{
+        font-size: 1.2rem;
+    }
+
 </style>
 
 <body>
