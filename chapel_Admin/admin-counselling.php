@@ -93,7 +93,6 @@ require APPROOT . '/includes/footerpanel.php';
                 method:'post',
                 data:{action:action},
                 success:function(response){
-                    console.log(response);
                     $('#showHide').html(response);
                 }
             });
@@ -102,14 +101,31 @@ require APPROOT . '/includes/footerpanel.php';
 
         $('body').on('click','.activateCounselFrom',function(e){
             e.preventDefault();
-            alert('ON');
+            action = 'activateBtn';
+           $.ajax({
+               url:'script/counselling-process.php',
+               method:'post',
+               data:{action:action},
+               success:function(response){
+                   showHideForm();
+               }
+           })
 
 
         });
 
         $('body').on('click','.deactivateCounselFrom',function(e){
             e.preventDefault();
-            alert('OFF');
+            action = 'deactivateBtn';
+            $.ajax({
+                url:'script/counselling-process.php',
+                method:'post',
+                data:{action:action},
+                success:function(response){
+                    showHideForm();
+                }
+            })
+
 
 
         });

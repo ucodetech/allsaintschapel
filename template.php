@@ -22,7 +22,7 @@ require APPROOT . '/includes/navpanel.php';
         <div class="page-wrapper">
             <!-- Page-body start -->
             <div class="page-body">
-
+                    i updated something here
             </div>
             <!-- Page-body end -->
         </div>

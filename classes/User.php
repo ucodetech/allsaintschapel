@@ -204,7 +204,7 @@ public function updateStudent($username, $email)
   //  'sudo_username' => $username
   // ));
 
-  $sql = "UPDATE students SET username = '$username' WHERE email = '$email' ";
+  $sql = "UPDATE members SET username = '$username' WHERE email = '$email' ";
   $this->_db->query($sql);
   return true;
 }
@@ -263,10 +263,9 @@ public function deleteToken($email, $field = array())
 public function updateRecoreds($user_id, $field = array())
 {
 	if(!$this->_db->update('students', 'id', $user_id, $field)){
+         throw new Exception("Error Processing Request", 1);
+         return false;
 
-    throw new Exception("Error Processing Request", 1);
-
-    return false;
   }
 }
 
@@ -414,7 +413,7 @@ public function getUser($cu)
 }
 
 public function activity($id){
-    $sql = "UPDATE users SET lastLogin = NOW() WHERE id = '$id'";
+    $sql = "UPDATE members SET last_login = NOW() WHERE id = '$id'";
     $this->_db->query($sql);
     return true;
 }

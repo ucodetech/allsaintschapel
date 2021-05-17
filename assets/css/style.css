@@ -16462,3 +16462,8 @@ body.dark {
   border-radius: 50%;
 
 }
+.spacer{
+  height: 10px;
+  border:5px double #000;
+  margin-bottom: 5px;
+}

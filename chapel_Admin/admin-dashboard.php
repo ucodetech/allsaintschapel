@@ -16,6 +16,28 @@ require APPROOT . '/includes/headpanel.php';
 require APPROOT . '/includes/navpanel.php';
 
 ?>
+<style>
+    .passport{
+        width:150px;
+        height:160px;
+        border:2px solid #000;
+        border-radius: 50%;
+    }
+    .signature{
+        width:80px;
+        height:50px;
+    }
+    .fa-cloud-upload{
+        font-size:2.5rem;
+        cursor: pointer;
+    }
+    .imgDiv,  .imgDivs{
+        cursor:pointer;
+    }
+    .btn{
+        border-radius:20px;
+    }
+</style>
     <div class="pcoded-inner-content">
         <!-- Main-body start -->
         <div class="main-body">
@@ -40,7 +62,7 @@ require APPROOT . '/includes/navpanel.php';
                                     </div>
                                 </div>
                                 <div class="card-block">
-                                    <div class="table-responsive" id="showCurrentLoggedInM">
+                                    <div class="row p-3" id="showCurrentLoggedInM">
 
                                     </div>
                                 </div>
@@ -214,7 +236,7 @@ require APPROOT . '/includes/navpanel.php';
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="card-block">
+                                <div class="card-block p-3">
                                     <div class="table-responsive" id="showstudentExecos">
 
                                     </div>
@@ -235,18 +257,17 @@ require APPROOT . '/includes/navpanel.php';
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="card-block">
-                                    <div class="align-middle m-b-30">
-                                        <img src="../assets/images/avatar-2.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
-                                        <div class="d-inline-block">
-                                            <h6>David Jones</h6>
-                                            <p class="text-muted m-b-0">Developer</p>
-                                        </div>
+                                <div class="card-block" >
+                                    <div class="container" id="chapelCouncilExcos">
+                                    <p><img src="../gif/trans1.gif" alt="loader">&nbsp;Please wait...</p>
+                                    </div>
+                                    <hr class="inivisible">
+                                    <div class="text-center">
+                                        <a style="font-size: 1.2rem" href="#" data-toggle="modal" data-target="#addCouncilMemberModal" class="btn btn-primary btn-sm btn-block">Add Council Member</a>
+                                        <hr>
+                                        <div id="addmessage"></div>
                                     </div>
 
-                                    <div class="text-center">
-                                        <a href="#!" class="b-b-primary text-primary">View all</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -258,12 +279,106 @@ require APPROOT . '/includes/navpanel.php';
             <div id="styleSelector"> </div>
         </div>
     </div>
+<!--    council selection modal-->
 
+<!-- Modal -->
+<div class="modal fade" id="addCouncilMemberModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Add Council Member</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="#" method="post" enctype="multipart/form-data" id="addCouncilForm">
+                    <div class="form-group">
+                        <label for="fullname">Full Name: <sup class="text-danger">*</sup></label>
+                        <input type="text" name="fullname" id="fullname" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email: <sup class="text-danger">*</sup></label>
+                        <input type="email" name="email" id="email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNo">Phone No: <sup class="text-danger">*</sup></label>
+                        <input type="tel" name="phoneNo" id="phoneNo" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="portfolio">Portfolio: <sup class="text-danger">*</sup></label>
+                        <input type="text" name="portfolio" id="portfolio" class="form-control">
+                    </div>
+
+                    <div class="form-group text-center">
+                        <label for="profileFile">
+                            <div class="imgDiv" id="showFile">
+                                <img src="profile/default.png" class="img-fluid passport" alt="passport">
+                            </div>
+                        </label><br>
+
+                            <input type="file" name="profileFile" id="profileFile" style="display: none;">
+                            <!--                                                    <hr class="invisible">-->
+                            <label for="profileFile"><i class="fa fa-cloud-upload fa-lg text-info"></i> &nbsp;Select File</label>
+
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-block btn-outline-primary">Add Council Member</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <span id="showMessage"><br>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end of council selection modal-->
 <?php
 require APPROOT . '/includes/footerpanel.php';
 ?>
 <script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#showFile').html('<img src="'+e.target.result+'" alt="passport" class="img-fluid passport">');
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    $("#profileFile").change(function() {
+        readURL(this);
+    });
+
     $(document).ready(function(){
+
+        $('#addCouncilForm').submit(function (e){
+            e.preventDefault();
+            $.ajax({
+                url:'script/uploadCouncile-process.php',
+                method:'post',
+                processData: false,
+                contentType:false,
+                cache:false,
+                data: new FormData(this),
+                success:function (response){
+                    if (response==='success'){
+                        $('#addCouncilForm')[0].reset();
+                        $('#addCouncilMemberModal').modal('hide');
+                        $('#addmessage').html('<span class="text-success text-center">Council Member Added</span>');
+                        fetchCouncil();
+                    }else{
+                        $('#showMessage').html(response);
+                    }
+                }
+            })
+        });
+
+
+
 
         //fetch admins
         fetch_newMembers();
@@ -323,10 +438,6 @@ require APPROOT . '/includes/footerpanel.php';
         });
     })
 
-
-
-
-
         fetchLoggedInAdmins();
         setTimeout(function () {
             fetchLoggedInAdmins();
@@ -343,6 +454,51 @@ require APPROOT . '/includes/footerpanel.php';
                 }
             });
         }
+
+
+        //fetch student exco
+        fetch_StudentExco();
+        function fetch_StudentExco(){
+            action = 'fetchStudentExco';
+            $.ajax({
+                url:'script/request-process.php',
+                method:'post',
+                data:{action:action},
+                success:function (response){
+                    // console.log(response);
+                    $('#showstudentExecos').html(response);
+                    $('#ShowstudentExeco').DataTable({
+                        "paging": true,
+                        "lengthChange": true,
+                        "searching": true,
+                        "ordering": true,
+                        "order": [0,'desc'],
+                        "info": true,
+                        "autoWidth": true,
+                        "responsive": false,
+                        "lengthMenu": [[10,10, 25, 50, -1], [10, 25, 50, "All"]]
+                    });
+                }
+            });
+        }
+    //fetch chapel council exectives
+        fetchCouncil();
+        function fetchCouncil(){
+            action = 'fetchCouncilExco';
+            $.ajax({
+                url:'script/request-process.php',
+                method:'post',
+                data:{action:action},
+                success:function (response){
+                    // console.log(response);
+                    $('#chapelCouncilExcos').html(response);
+
+                }
+            });
+        };
+
+
+
     });
 </script>
 <script type="text/javascript" src="scripts.js"></script>

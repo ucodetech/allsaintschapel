@@ -8,7 +8,7 @@ class Feedback
            $_user;
 
 
-  function __construct()
+  public function __construct()
   {
     $this->_db = Database::getInstance();
    $this->_user = new User() ;
@@ -35,7 +35,7 @@ public function feedAction($id){
 
 // Fetch all notes from user
 public function getFeedback(){
-  $sql = "SELECT feedback.id, feedback.subject, feedback.feedback, feedback.dateCreated, feedback.replied,feedback.user_id, users.full_name, users.email FROM feedback INNER JOIN users ON feedback.user_id = users.id WHERE feedback.deleted = 0";
+  $sql = "SELECT feedback.id, feedback.subject, feedback.feedback, feedback.dateCreated, feedback.replied,feedback.user_id, members.full_name, members.email FROM feedback INNER JOIN members ON feedback.user_id = members.id WHERE feedback.deleted = 0";
 $data = $this->_db->query($sql);
 $output = '';
 if ($data->count()) {
@@ -45,13 +45,13 @@ if ($data->count()) {
       }else{
 
         $output .= '
-        <table id="show" class="table table-striped table-sm">
+        <table id="showFeed" class="table table-striped table-sm">
           <thead>
             <tr>
               <th>#</th>
               <th>User Name</th>
               <th>User Email</th>
-              <th>Feedback Suject</th>
+              <th>Feedback Subject</th>
               <th>Feedback</th>
               <th>Sent On</th>
               <th>Replied</th>
