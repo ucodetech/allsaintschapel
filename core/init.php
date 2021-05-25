@@ -32,8 +32,8 @@ define('APPVERSION', '1.0.0');
 define('ADMIN', 'CONTROL ROOM');
 define('NAVNAME', 'ASC');
 define('DASHBOARD', 'ACS Panel');
-define('EMAIL', 'ucodetut@gmail.com');
-define('PASSWORD', 'warmechine500@##***');
+define('EMAIL', 'youremail@gmail.com');
+define('PASSWORD', 'passwaord\\\===\\\@');
 define('AUDIOPATH', 'uploads/sermon/');
 
 
