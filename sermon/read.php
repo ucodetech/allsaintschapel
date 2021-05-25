@@ -115,7 +115,7 @@ $sermon = new Sermon();
   $(document).ready(function(){
 
     $(document).on('click', '.like', function(){
-      like_id = '<?= $tut->id;?>';
+      like_id = '<?= $read->id;?>';
 
        $.ajax({
         url: '../download-process.php',
@@ -131,7 +131,7 @@ $sermon = new Sermon();
     });
 
      $(document).on('click', '.unlike', function(){
-      unlike_id =  '<?= $tut->id;?>';
+      unlike_id =  '<?= $read->id;?>';
       
        $.ajax({
         url: '../download-process.php',
@@ -150,7 +150,7 @@ $sermon = new Sermon();
 showBtn();
 
   function showBtn(){
-     liked = '<?= $tut->id;?>';
+     liked = '<?= $read->id;?>';
     $.ajax({
     url: '../download-process.php',
     method: 'post',
@@ -164,7 +164,7 @@ showBtn();
 fetchLike();
 
   function fetchLike(){
-  like_post_id = '<?= $tut->id ?>';
+  like_post_id = '<?= $read->id ?>';
   $.ajax({
     url: '../download-process.php',
     method: 'post',
@@ -255,8 +255,6 @@ fetchLike();
   $('#search').keyup(function(){
     var searchText = $(this).val();
     if (searchText!= '') {
-      alert(searchText);
-
       $.ajax({
         url: '../../search/search-process.php',
         method: 'post',
@@ -371,7 +369,7 @@ $('#subBtn').click(function(e){
 // showBtn();
 
 //   function showBtn(){
-//      liked = '<?= $tut->id;?>';
+//      liked = '<?= $read->id;?>';
 //     $.ajax({
 //     url: '../download-process.php',
 //     method: 'post',
