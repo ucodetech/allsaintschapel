@@ -62,19 +62,15 @@
                                     <h6>Notifications</h6>
                                     <label class="label label-danger">New</label>
                                 </li>
-                                <li class="waves-effect waves-light">
-                                    <div class="media">
-                                        <img class="d-flex align-self-center img-radius" src="<?=URLROOT?>img/chap.png" alt="Generic placeholder image">
-                                        <div class="media-body">
-                                            <h5 class="notification-user">John Doe</h5>
-                                            <p class="notification-msg">Permission</p>
-                                            <span class="notification-time">Last Login 30 minutes ago</span>
-                                        </div>
-                                    </div>
+                                <li class="waves-effect waves-light" id="showNotification">
+
                                 </li>
 
+
                             </ul>
+
                         </li>
+
                         <li class="user-profile header-notification">
                             <a href="#!" class="waves-effect waves-light">
                                 <img src="<?=URLROOT?>chapel_Admin/profile/<?=$admin->data()->passport;?>" class="img-radius" alt="<?=$admin->data()->sudo_full_name?>">
@@ -182,12 +178,19 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="<?=$link?>bulletin" class="waves-effect waves-dark">
+                                    <span class="pcoded-micon"><i class="ti-book"></i><b>D</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Bulletin</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        <!--     <li>
                                 <a href="<?=$link?>notice" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="ti-bell"></i><b>D</b></span>
                                     <span class="pcoded-mtext" data-i18n="nav.dash.main">Special Notice</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
-                            </li>
+                            </li> -->
                             <li>
                                 <a href="<?=$link?>feedback" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="ti-comment"></i><b>D</b></span>
@@ -195,27 +198,27 @@
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
-                            <li>
+                           <!--  <li>
                                 <a href="<?=$link?>service" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="ti-list"></i><b>D</b></span>
                                     <span class="pcoded-mtext" data-i18n="nav.dash.main">Order of Service</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
-                            </li>
-                            <li>
+                            </li> -->
+                            <!-- <li>
                                 <a href="<?=$link?>outline" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="ti-book"></i><b>D</b></span>
                                     <span class="pcoded-mtext" data-i18n="nav.dash.main">Bible Study Outline</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
-                            </li>
-                            <li>
+                            </li> -->
+                           <!--  <li>
                                 <a href="<?=$link?>desk" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="ti-notepad"></i><b>D</b></span>
                                     <span class="pcoded-mtext" data-i18n="nav.dash.main">Chaplain's Desk</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
-                            </li>
+                            </li> -->
                             <li>
                                 <a href="<?=$link?>docs" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="ti-layout-cta-center"></i><b>D</b></span>

@@ -46,7 +46,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-
+    <!-- include codemirror (codemirror.css, codemirror.js, xml.js, formatting.js) -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="<?=URLROOT?>assetUpdated/summernote/summernote-bs4.css">
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.css">
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/monokai.css">
 
 </head>
 <style>
@@ -57,7 +61,7 @@
         font-family: 'Amaranth', sans-serif;
 
     }
-    .form-group input,.form-group select,.form-group textarea, label{
+    .form-group input,.form-group select,.form-group textarea, label,table,th,tr,td,td a{
         font-size: 1.2rem;
     }
 

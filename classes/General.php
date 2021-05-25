@@ -572,4 +572,16 @@ return  $output;
         }
     }
 
+    public function updateAdminRecored($admin_id, $field, $value)
+    {
+      $this->_db->update('superusers', 'id', $admin_id, array(
+          $field => $value
+
+        ));
+
+        return true;
+    }
+
+
+
 }//end of class

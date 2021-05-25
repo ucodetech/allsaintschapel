@@ -1,5 +1,6 @@
 RewriteEngine On
 
+Options -Indexes
 
 
 RewriteRule ^member-detail/([0-9a-zA-Z_-]+)$ member-detail.php?detail=$1 [NC,L]
@@ -9,5 +10,7 @@ RewriteRule ^request-detail/([0-9a-zA-Z_-]+)$ request-detail.php?requestD=$1 [NC
 RewriteRule ^visitor-detail/([0-9a-zA-Z_-]+)$ visitor-detail.php?detail=$1 [NC,L]
 RewriteRule ^screening-detail/([0-9a-zA-Z_-]+)$ screening-detail.php?detail=$1 [NC,L]
 RewriteRule ^counsel-detail/([0-9a-zA-Z_-]+)$ counsel-detail.php?detail=$1 [NC,L]
-
-
+RewriteRule ^sermon-text/([0-9a-zA-Z_-]+)$ sermon-text.php?detail=$1 [NC,L]
+RewriteRule ^sermon-audio/([0-9a-zA-Z_-]+)$ sermon-audio.php?detail=$1 [NC,L]
+RewriteRule ^bulletin-detail/([0-9a-zA-Z_-]+)$ bulletin-detail.php?detail=$1 [NC,L]
+RewriteRule ^bulletin-edit/([0-9a-zA-Z_-]+)$ bulletin-edit.php?edit=$1 [NC,L]

@@ -122,7 +122,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'change_password') {
   $newP = $show->test_input($_POST['newPwd']);
   $cnewP = $show->test_input($_POST['retypeNewPwd']);
   
-  $password = $admin->getPassword($admin_id);
+  $password = $admin->data()->sudo_password;
 
  if ($currentP == '') {
     echo $show->showMessage('danger', 'Current Password is required!', 'warning');
@@ -158,7 +158,9 @@ if (isset($_POST['action']) && $_POST['action'] == 'change_password') {
       return false;
     }else{
       $admin->change_password($hashNewPass, $admin_id);
-      echo $show->showMessage('success', 'Password Changed successfully!', 'check');
+      echo 'changed';
+      $admin->logout($admin->data()->id);
+      
     }
   }
 }

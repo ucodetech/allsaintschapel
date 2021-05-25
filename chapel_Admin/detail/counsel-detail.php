@@ -245,6 +245,7 @@ if (isset($_GET['detail']) && !empty($_GET['detail'])){
                                         </div>
                                     </form>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -276,10 +277,11 @@ require APPROOT . '/includes/footerpanel.php';
                 data: $('#counsellingFormUpdate').serialize()+'&action=updateCounsel',
                 success: function (response) {
                     if ($.trim(response) === 'success') {
-                        Swal.fire({
-                            title: 'Counselling Records Updated Successfully!',
-                            type: 'success'
-                        });
+                        Swal.fire(
+                            'Updated',
+                            'Counselling Records Updated Successfully!',
+                            'success'
+                        );
                         setTimeout(function (){
                             location.reload();
                         },4000);

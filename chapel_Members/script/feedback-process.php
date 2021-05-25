@@ -23,13 +23,14 @@ if (isset($_POST['action']) && $_POST['action'] == 'sendFeedback') {
 
         ));
         if ($validation->passed()) {
-
+            $userid = Input::get('user_id');
             try {
                 $feedback->feedback(array(
                     'user_id' => Input::get('user_id'),
                     'subject' => Input::get('subject'),
                     'feedback' => Input::get('feedback')
                 ));
+                $feedback->notifyMe($userid, 'Sent Feedback');
                 echo 'success';
 
             } catch (Exception $e) {

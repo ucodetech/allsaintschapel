@@ -27,8 +27,3 @@ if (isset($_POST['action']) && $_POST['action'] == 'login') {
 
 
 }
-
-if(isset($_POST['action']) && $_POST['action'] == "update_time"){
-    $id =  $member->data()->id;
-    $member->activity($id);
-}

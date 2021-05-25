@@ -62,15 +62,8 @@
                                     <h6>Notifications</h6>
                                     <label class="label label-danger">New</label>
                                 </li>
-                                <li class="waves-effect waves-light">
-                                    <div class="media">
-                                        <img class="d-flex align-self-center img-radius" src="<?=URLROOT?>img/chap.png" alt="Generic placeholder image">
-                                        <div class="media-body">
-                                            <h5 class="notification-user">John Doe</h5>
-                                            <p class="notification-msg">Permission</p>
-                                            <span class="notification-time">Last Login 30 minutes ago</span>
-                                        </div>
-                                    </div>
+                                <li class="waves-effect waves-light"  id="showNotify">
+                                  
                                 </li>
 
                             </ul>

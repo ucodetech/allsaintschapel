@@ -9,7 +9,7 @@ update_admin_login();
                data:{action:action},
                success:function(response)
                {
-                 console.log(response);
+                 // console.log(response);
 
                },
                error:function(){alert("something went wrong admin update")}
@@ -37,7 +37,7 @@ function fetch_user_login()
         data:{action:action},
         success:function(data)
         {
-            console.log(data);
+            // console.log(data);
             $('#showCurrentLoggedInM').html(data);
 
         },

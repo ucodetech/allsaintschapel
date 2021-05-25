@@ -94,6 +94,9 @@ require APPROOT . '/includes/footerpanel1.php';
 <script>
     $(document).ready(function (){
 
+        setInterval(function(){
+            update_user_login();
+        }, 1000);
 
         update_user_login();
 
@@ -101,19 +104,17 @@ require APPROOT . '/includes/footerpanel1.php';
         {
             var action = 'update_time';
             $.ajax({
-                url:"script/login-process.php",
+                url:"script/inits.php",
                 method:"POST",
                 data:{action:action},
                 success:function(data)
-                {},
+                {console.log(data)},
                 error:function(){alert("something went wrong updating activity")}
 
             });
         }
-        setInterval(function(){
-            update_user_login();
-        }, 1000);
-
+        
 
     })
 </script>
+<script type="text/javascript" src="notify.js"></script>

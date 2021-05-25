@@ -45,26 +45,27 @@ if ($data->count()) {
       }else{
 
         $output .= '
-        <table id="showFeed" class="table table-striped table-sm">
+        <table id="showFeed" class="table table-striped table-lg">
           <thead>
             <tr>
               <th>#</th>
-              <th>User Name</th>
-              <th>User Email</th>
+              <th>Full Name</th>
+              <th>Email</th>
               <th>Feedback Subject</th>
               <th>Feedback</th>
               <th>Sent On</th>
               <th>Replied</th>
               <th>Action</th>
             </tr>
+            </thead>
             <tbody>
         ';
         $x = 0;
         foreach ($feeds as $feed) {
           if ($feed->replied == 0) {
-              $msg = "<span class='text-danger align-self-center lead'>No</span>";
+              $msg = "<p class='text-danger align-self-center lead'>No</p>";
           }else{
-            $msg = "<span class='text-success align-self-center lead'>Yes</span>";
+            $msg = "<p class='text-success align-self-center lead'>Yes</p>";
           }
           $x = $x + 1;
         $output .= '
@@ -77,7 +78,7 @@ if ($data->count()) {
           <td>'.pretty_date($feed->dateCreated).'</td>
           <td>'.$msg.'</td>
           <td>
-            <a href="#" id="'.$feed->id.'"  title="View Details" class="text-success feedBackinfoBtn"  data-toggle="modal" data-target="#showFeedDetailsModal"><i class="fas fa-info-circle fa-lg"></i> </a>&nbsp;
+            <a href="#" id="'.$feed->id.'"  title="View Details" class="text-success feedBackinfoBtn"  data-toggle="modal" data-target="#showFeedDetailsModal"><i class="fa fa-info-circle fa-lg"></i> </a>&nbsp;
 
             <a href="#" id="'.$feed->id.'" title="Delete Feedback" class="text-danger feedBackdeleteBtn"><i class="fa fa-trash fa-lg"></i> </a>
           </td>
@@ -87,7 +88,6 @@ if ($data->count()) {
         }
         $output .='
         </tbody>
-      </thead>
     </table>
         ';
 
@@ -109,6 +109,35 @@ public function feedDetails($id){
   }
 
 }
+
+
+//Reply to user feedback
+public function replyFeedback($userid, $message){
+  $this->_db->insert('notifications', array(
+    'user_id' => $userid,
+    'type' => 'user',
+    'message' => $message
+  ));
+  return true;
+}
+
+public function notifyMe($userid, $message){
+  $this->_db->insert('notifications', array(
+    'user_id' => $userid,
+    'type' => 'admin',
+    'message' => $message
+  ));
+  return true;
+}
+
+
+public function updateFeedbackReplied($feedid){
+  $this->_db->update('feedback','id', $feedid , array(
+    'replied' => 1
+  ));
+  return true;
+}
+
 
 
 

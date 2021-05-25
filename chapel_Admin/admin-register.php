@@ -126,3 +126,6 @@ require APPROOT . '/includes/footerpanel.php';
         });
     })
 </script>
+<script type="text/javascript" src="scripts.js"></script>
+<script type="text/javascript" src="activity.js"></script>
+<script type="text/javascript" src="notify.js"></script>

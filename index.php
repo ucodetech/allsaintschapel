@@ -52,7 +52,7 @@
                             <hr class="cell-divide-hr">
 
                             <div class="button-wrapper">
-                                <a class="btn-solid-reg page-scroll" href="check">Check</a>
+                                <a class="btn-solid-reg page-scroll" href="message">Check</a>
                             </div>
                         </div>
                     </div> <!-- end of card -->
@@ -67,7 +67,7 @@
                             <hr class="cell-divide-hr">
 
                             <div class="button-wrapper">
-                                <a class="btn-solid-reg page-scroll" href="check">Check</a>
+                                <a class="btn-solid-reg page-scroll" href="sermon" target="_blank">Check</a>
                             </div>
                         </div>
                     </div> <!-- end of card -->

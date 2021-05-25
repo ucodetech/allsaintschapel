@@ -78,8 +78,14 @@ function pretty_day($day)
 }
 
 function pretty_time($time){
-		 		return date("h:i A");
+		 		return date("h:i a");
 		 	}
+function pretty_time1($time){
+		 		return date("h:i");
+		 	}
+function pretty_nameDay($day){
+	return date('D d  M, Y');
+}
 function timeAgo($time){
 	date_default_timezone_set('Africa/Lagos');
 	$time = strtotime($time) ? strtotime($time) : $time;

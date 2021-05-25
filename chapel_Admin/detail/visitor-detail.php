@@ -204,7 +204,7 @@ if (isset($_GET['detail']) && !empty($_GET['detail'])){
 
                                 <hr class="invisible">
                                 <!--    update signature-->
-                               
+
                             </div>
                         </div>
                     </div>
@@ -235,10 +235,11 @@ require APPROOT . '/includes/footerpanel.php';
                 success: function (response) {
                     console.log(response);
                     if ($.trim(response) === 'success') {
-                        Swal.fire({
-                            title: 'Member Records Updated Successfully!',
-                            type: 'success'
-                        });
+                        Swal.fire(
+                            'Updated',
+                            'Member Records Updated Successfully!',
+                            'success'
+                        );
                         setTimeout(function (){
                             location.reload();
                         },2000);

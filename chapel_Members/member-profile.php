@@ -447,3 +447,4 @@ require APPROOT . '/includes/footerpanel1.php';
     })
 </script>
 
+<script type="text/javascript" src="notify.js"></script>

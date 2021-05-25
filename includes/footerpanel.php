@@ -44,7 +44,13 @@
 <script src="<?=URLROOT?>assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?=URLROOT?>assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
  <script src="<?=URLROOT?>assets/plugins/sweetalert2/sweetalert2.all.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+ <script type="text/javascript" src="<?=URLROOT?>assetUpdated/summernote/summernote-bs4.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.js"></script>
 
-             </body>
+
+ </body>
 
 </html>

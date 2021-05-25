@@ -23,7 +23,7 @@ class Notification
 public function notifi($fields = array())
 {
 	if(!$this->_db->insert('notifications', $fields)){
-		throw new Exception("Error Processing Request", 1);
+		throw new Exception("Error Logging notification", 1);
 	}
 }
 
@@ -32,28 +32,9 @@ public function fetchNotifaction($userid){
    $sql = "SELECT * FROM notifications WHERE user_id = '$userid' AND type = 'user'";
    $checked = $this->_db->query($sql);
    if ($checked->count()) {
-     $notifaction = $checked->results();
-    foreach ($notifaction as $noti) {
-      $output .= '
-      <div class="alert alert-danger" role="alert">
-        <button type="button" id="'.$noti->id.'" name="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span arid-hidden="true">&times;</span>
-      </button>
-      <h4 class="alert-heading">New Notification</h4>
-      <p class="mb-0 lead">
-        '.$noti->message.'
-      </p>
-      <hr class="my-2">
-      <p class="mb-0 float-left">Reply From Admin</p>
-      <p class="mb-0 float-right"><i class="lead">'.timeAgo($noti->dateCreated).'</i></p>
-      <div class="clearfix"> </div>
-    </div>
-      ';
-    }
-    return $output;
-
-  }else{
-    echo '<h4 class="text-center text-dark mt-5">No New Notifications</h4>';
+     return  $checked->results();
+  }else {
+    return false;
   }
 }
 
@@ -75,16 +56,10 @@ public function fetchNotifactionCount(){
 
 }
 
-//Delete notification
-  public function removeNotification($id){
-    $sql = "DELETE FROM notifications WHERE id = '$id' AND type = 'user'";
-    $this->_db->query($sql);
-    return true;
-  }
 
   //FEtch notification from database admin
   public function fetchNotifactionAdmin(){
-    $sql = "SELECT * FROM notifications ORDER BY id DESC";
+    $sql = "SELECT * FROM notifications WHERE type = 'admin' ORDER BY id DESC";
      $this->_db->query($sql);
     if ($this->_db->count()) {
       return $this->_db->results();
@@ -115,6 +90,12 @@ public function fetchNotifactionCount(){
       return true;
     }
 
+    //Delete notification
+      public function removeNotification($id){
+        $sql = "DELETE FROM notifications WHERE id = '$id' AND type = 'user'";
+        $this->_db->query($sql);
+        return true;
+      }
 
 
 

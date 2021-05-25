@@ -125,7 +125,11 @@ class FileUpload
 
 
     }
+    public function  moveToDatabaseUpdate($table, $id, $fields = array()){
+        return $this->_db->update($table,'id',$id, $fields);
 
+
+    }
 
     //get requirements
 

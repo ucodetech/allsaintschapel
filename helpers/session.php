@@ -90,37 +90,3 @@ function hasPermissionEditor($permission = 'editor'){
    }
 
 }
-
-function hasPermissionLIBStudent($permission = 'lib_student'){
-     $user = new User();
-    if (isset($_SESSION[Config::get('session/session_members')])) {
-
-    $permissioned = $user->data()->permission;
-
-    $permissions = explode(',', $permissioned);
-     if (in_array($permission, $permissions,true)) {
-      return true;
-     }
-     return false;
-
-   }
-
-}
-
-function hasPermissionLIBStaff($permission = 'lib_staff'){
-     $user = new User();
-    if (isset($_SESSION[Config::get('session/session_members')])) {
-
-    $permissioned = $user->data()->permission;
-
-    $permissions = explode(',', $permissioned);
-     if (in_array($permission, $permissions,true)) {
-      return true;
-     }
-     return false;
-
-   }
-
-}
-
-

@@ -216,7 +216,7 @@ public function feedDetails($id){
 }
 
 public function selectUserNote($userid){
-  $data = $this->_db->get('users', array('id', '=', $userid));
+  $data = $this->_db->get('members', array('id', '=', $userid));
   if ($data->count()) {
       return $this->_db->first();
   }else{

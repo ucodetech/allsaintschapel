@@ -31,14 +31,14 @@ if (isset($_FILES['profile_file']) && !empty($_FILES['profile_file'])) {
 
     $ds = DIRECTORY_SEPARATOR;
     $temp_file = $file['tmp_name'];
-    $file_path = $fileupload->moveFile($temp_file, "profile", $filename)->path();
+    $file_path = $fileupload->moveFile($temp_file, "chapel_Admin","profile", $filename)->path();
     $fileSize = $file['size'];
 
 
     $fileupload->moveToDatabaseUpdate('superusers',$admin_id, array(
-        'profile_pic' => $file_path
+        'passport' => $file_path
     ));
-      
+
 
     echo 'success';
 
@@ -67,16 +67,15 @@ if (isset($_FILES['signature_file']) && !empty($_FILES['signature_file'])) {
 
     $ds = DIRECTORY_SEPARATOR;
     $temp_file = $file['tmp_name'];
-    $file_path = $fileupload->moveFile($temp_file, "signatures", $filename)->path();
+    $file_path = $fileupload->moveFile($temp_file, "chapel_Admin", "signatures", $filename)->path();
     $fileSize = $file['size'];
 
 
-    $fileupload->moveToDatabaseUpdate('adminSignatures',$admin_id, array(
+    $fileupload->moveToDatabaseUpdate('superusers',$admin_id, array(
         'signature' => $file_path
     ));
-      
+
 
     echo 'success';
 
 }
-

@@ -16467,3 +16467,7 @@ body.dark {
   border:5px double #000;
   margin-bottom: 5px;
 }
+
+.playerTitleLink audio{ 
+  border: 2px double #235;
+}

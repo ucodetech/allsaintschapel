@@ -266,4 +266,16 @@ public function insertProfile($adminId)
         }
     }
 
+
+public function change_password($hashNewPass, $admin_id)
+{
+  $this->_db->update('superusers', 'id', $admin_id, array(
+            'sudo_password' => $hashNewPass
+
+        ));
+
+        return true;
+}
+	
+
 }//end of class

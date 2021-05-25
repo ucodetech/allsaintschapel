@@ -22,8 +22,6 @@ if (isset($_GET['detail']) && !empty($_GET['detail'])){
     $getDetail = $general->getMemberDetail($detail);
         if ($getDetail){
             ?>
-
-
 <style>
 input[type="text"],input[type="email"],input[type="tel"],input[type="date"]{
     border:none;
@@ -86,6 +84,7 @@ label{
 }
 .btn{
     border-radius:20px;
+  }
 </style>
     <div class="pcoded-inner-content">
     <!-- Main-body start -->
@@ -368,10 +367,11 @@ require APPROOT . '/includes/footerpanel.php';
                 success: function (response) {
                     console.log(response);
                     if ($.trim(response) === 'success') {
-                        Swal.fire({
-                            title: 'Member Records Updated Successfully!',
-                            type: 'success'
-                        });
+                        Swal.fire(
+                            'Updated',
+                            'Member Records Updated Successfully!',
+                            'success'
+                        );
                         setTimeout(function (){
                             location.reload();
                         },2000);

@@ -50,6 +50,44 @@ require APPROOT . '/includes/navpanel.php';
         </div>
     </div>
 
+    <!-- Display feedback in a details modal -->
+     <div class="modal fade" id="showFeedDetailsModal">
+       <div class="modal-dialog modal-dialog-centered modal-lg">
+         <div class="modal-content" id="feedBack">
+
+
+         </div>
+       </div>
+     </div>
+
+ <!-- //REply feedback -->
+ <div class="modal fade" id="replyModal">
+   <div class="modal-dialog modal-dialog-centered modal-lg">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h3 class="modal-title">
+         Reply This Feedback
+         </h3>
+         <button type="button" class="close" data-dismiss="modal" name="button">&times;</button>
+       </div>
+       <div class="modal-body">
+         <form class="px-3" action="#" method="post" id="reply-feedback-form">
+           <div class="form-group">
+             <textarea name="message" id="message" class="form-control" rows="6" placeholder="Message here" required autofocus="true"></textarea>
+           </div>
+           <div class="form-group">
+             <input type="submit" id="replyBtn" value="Send Reply" class="btn btn-success btn-block btn-lg">
+           </div>
+         </form>
+       </div>
+
+     </div>
+   </div>
+ </div>
+
+
+
+
     <?php
     require APPROOT . '/includes/footerpanel.php';
     ?>
@@ -186,3 +224,6 @@ require APPROOT . '/includes/navpanel.php';
 
         })
     </script>
+    <script type="text/javascript" src="scripts.js"></script>
+    <script type="text/javascript" src="activity.js"></script>
+    <script type="text/javascript" src="notify.js"></script>

@@ -34,6 +34,7 @@ define('NAVNAME', 'ASC');
 define('DASHBOARD', 'ACS Panel');
 define('EMAIL', 'ucodetut@gmail.com');
 define('PASSWORD', 'warmechine500@##***');
+define('AUDIOPATH', 'uploads/sermon/');
 
 
 //Instantiation and passing `true` enables exceptions

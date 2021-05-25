@@ -10,6 +10,7 @@ require APPROOT . '/includes/headpanel.php';
 <section class="login-block">
     <!-- Container-fluid starts -->
     <div class="container">
+
         <div class="row">
             <div class="col-sm-12">
                 <!-- Authentication card start -->
@@ -23,6 +24,19 @@ require APPROOT . '/includes/headpanel.php';
                             <div class="row m-b-20">
                                 <div class="col-md-12">
                                     <h3 class="text-center">Admin Login</h3>
+                                    <hr class="invisible">
+                                   
+                                     <?php if (Session::exists('warning')): ?>
+                                        <div class="alert alert-danger alert-dismissible">
+                                            <button type="button" class="close" data-dismiss="alert">
+                                           &times;
+                                           </button>
+                                    <i class="fa fa-warning"></i>&nbsp;
+                                            <strong class="text-left">
+                                                <?=Session::flash('warning') ?>
+                                            </strong>
+                                        </div>
+                                    <?php endif ?>
                                 </div>
                             </div>
                             <div class="form-group form-primary">

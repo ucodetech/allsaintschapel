@@ -414,10 +414,9 @@ public function getUser($cu)
 
 public function activity($id){
     $sql = "UPDATE members SET last_login = NOW() WHERE id = '$id'";
-    $this->_db->query($sql);
+    $d = $this->_db->query($sql);
     return true;
 }
-
 
 
 

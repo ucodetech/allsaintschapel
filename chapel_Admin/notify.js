@@ -1,18 +1,17 @@
 $(document).ready(function(){
   //FEtch notification
 
-  fetchNotifaction();
-  setInterval(function(){
-        fetchNotifaction();
-  }, 1000);
+
   setInterval(function(){
     checkNotifacations();
 
   }, 1000);
   setInterval(function(){
     checkNotifacationsc();
+    fetchNotifaction();
 
   }, 1000);
+  fetchNotifaction();
 
   function fetchNotifaction(){
     $.ajax({
@@ -20,7 +19,7 @@ $(document).ready(function(){
       method: 'post',
       data: {action: 'fetchNotifaction'},
       success:function(response){
-        $('#notification').html(response);
+        $('#showNotification').html(response);
       }
     });
   }
@@ -72,7 +71,7 @@ $(document).ready(function(){
       method: 'post',
       data: {notifacation_id: notifacation_id},
       success:function(response){
-        checkNotifacations();
+        // checkNotifacations();
           fetchNotifaction();
 
       }
