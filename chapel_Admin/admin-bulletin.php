@@ -16,6 +16,21 @@ require APPROOT . '/includes/headpanel.php';
 require APPROOT . '/includes/navpanel.php';
 
 ?>
+<style>
+      .fa-cloud-upload{
+        font-size:2.5rem;
+        cursor: pointer;
+    }
+    .imgDiv,  .imgDivs{
+        cursor:pointer;
+    }
+    .btn{
+        border-radius:20px;
+    }
+    label{
+        cursor: pointer;
+    }
+</style>
 <div class="pcoded-inner-content">
     <!-- Main-body start -->
     <div class="main-body">
@@ -71,6 +86,27 @@ require APPROOT . '/includes/navpanel.php';
     require APPROOT . '/includes/footerpanel.php';
     ?>
     <script>
+        function readURL(input){
+
+    if (input.files && input.files[0]) {
+       var reader = new FileReader();
+      reader.onload = function(e){
+        $('#showFront').html(e.target.name);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+ function getURL(input){
+
+      if (input.files && input.files[0]) {
+         var reader = new FileReader();
+        reader.onload = function(e){
+          $('#showBack').html(e.target.name);
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
         $(document).ready(function (){
           gifroot =  '../gif/trans2.gif';
 
@@ -87,6 +123,40 @@ require APPROOT . '/includes/navpanel.php';
 
                 });
             }
+
+            // add bulletin
+    $('#front_file').change(function(){
+         readURL(this);
+    });
+
+    $('#back_file').change(function(){
+        getURL(this);
+    });
+
+    $('#profileForm').submit(function(e){
+        e.preventDefault();
+        $.ajax({
+            url: "script/setting-process.php",
+            method: "post",
+            processData: false,
+            contentType: false,
+            cache: false,
+            // data: {file: $("#profile_file").val()},
+            data: new FormData(this),
+            success: function(response) {
+                // console.log(response);
+            if($.trim(response)==="success") {
+                $('#message').html('<span class="text-success">You have updated your profile pic successfully!</span>');
+            }else{
+                $('#message').html(response);
+            }
+           }
+
+
+        });
+
+    })
+
 
           $('#addBulletinBtn').click(function(e){
             e.preventDefault();

@@ -2,6 +2,9 @@
     require_once 'core/init.php';
     require APPROOT . '/includes/head.php';
     require APPROOT . '/includes/nav.php';
+
+    $bulletin = new Bulletin();
+    $get = $bulletin->fetchBulletinfront();
 ?>
 
 
@@ -97,53 +100,20 @@
 
 
     <!-- Request -->
-    <div id="request" class="form-1">
+    <div id="bulletin" class="form-1">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="text-container">
-                        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. </p>
+                        <h2>All Saints Chapel Sunday Bullentin</h2>
+                        <p>Gain Access To Chapel Sunday Bulletins</p>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
                 <div class="col-lg-6">
 
                     <!-- Request Form -->
                     <div class="form-container">
-                        <form id="requestForm" data-toggle="validator" data-focus="false">
-                            <div class="form-group">
-                                <input type="text" class="form-control-input" id="rname" name="rname" required>
-                                <label class="label-control" for="rname">Full name</label>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control-input" id="remail" name="remail" required>
-                                <label class="label-control" for="remail">Email</label>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control-input" id="rphone" name="rphone" required>
-                                <label class="label-control" for="rphone">Phone</label>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control-select" id="rselect" required>
-                                    <option class="select-option" value="" disabled selected>Interested in...</option>
-                                    <option class="select-option" value="Personal Loan">Basic</option>
-                                    <option class="select-option" value="Car Loan">Standard</option>
-                                    <option class="select-option" value="House Loan">Premium</option>
-                                </select>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="form-control-submit-button">REQUEST</button>
-                            </div>
-                            <div class="form-message">
-                                <div id="rmsgSubmit" class="h3 text-center hidden"></div>
-                            </div>
-                        </form>
+                        <?php echo $get; ?>
                     </div> <!-- end of form-container -->
                     <!-- end of request form -->
 

@@ -60,7 +60,7 @@
 						<hr class="hr">
 						</div>
 						<div class="card-block p-2">
-							<h5 class="text-justified  text-bold lead"><?=$audio->title?></h5>
+							<h5 class="text-justified  text-bold lead"><?=$audio->title?> By <span class="text-bold"><i><?=$audio->author?></i></span> </h5>
 							<p class="detail">
 								<span class="text-left">Date Posted:<?=pretty_dates($audio->datePosted)?></span> || 
 								<span class="text-left">Date Preached: <?=pretty_dates($audio->dateOfSermon)?></span>

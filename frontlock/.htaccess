@@ -4,3 +4,4 @@ Options -Indexes
 
 
 RewriteRule ^download/([0-9a-zA-Z_-]+)$ download.php?d=$1 [NC,L]
+RewriteRule ^bulletin-detail/([0-9a-zA-Z_-]+)$ bulletin-detail.php?bull=$1 [NC,L]

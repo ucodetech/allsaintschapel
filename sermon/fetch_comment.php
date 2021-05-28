@@ -1,9 +1,10 @@
 <?php 
 require_once '../core/init.php';
 $com = new Comment();
-$tut_id = $_POST['tut_id'];
+
+$sermon_id = $_POST['sermon_id'];
     
-    $result = $com->getComment($tut_id);
+    $result = $com->getComment($sermon_id);
     echo $result;
 ?>
 <style type="text/css">

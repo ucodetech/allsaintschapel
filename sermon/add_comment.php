@@ -2,17 +2,18 @@
 require_once '../core/init.php';
 
    $com = new Comment();
+   $show = new Show();
 
-
-   $error = '';
-    $comment_sender_name = Show::test_input($_POST['comment_sender_name']);
-    $comment_sender_email = Show::test_input($_POST['comment_sender_email']);
-    $comment = Show::test_input($_POST['msg']);
+   if (isset($_POST['action']) && $_POST['action'] == 'addComment') {
+    $error = '';
+    $comment_sender_name = $show->test_input($_POST['comment_sender_name']);
+    $comment_sender_email = $show->test_input($_POST['comment_sender_email']);
+    $comment = $show->test_input($_POST['comment']);
   
-     if (empty($_POST['msg'])) {
-       $error .= '<span class="text-danger text-sm">Comment  must not be empty!</span>';
+     if (empty($_POST['comment'])) {
+       $error .= $show->showMessage('danger','Please write your comment!', 'warning');
     }
-    $tut_id = $_POST['tut_id'];
+    $sermon_id = $_POST['sermon_id'];
     $parent = $_POST['comment_id'];
 
    if ($error == '') {
@@ -21,13 +22,13 @@ require_once '../core/init.php';
           'parent_comment_id' => $parent,
           'comment' => $comment,
           'comment_sender_name' => $comment_sender_name,
-          'tut_id' => $tut_id,
+          'sermon_id' => $sermon_id,
           'comment_sender_email' => $comment_sender_email
         ));
      echo '<span class="text-success text-sm"><i class="fa fa-check fa-lg"></i></span>';
 
       } catch (Exception $e) {
-        echo Show::showMessage('danger','something went wrong!', 'warning');
+        echo $show->showMessage('danger','something went wrong!', 'warning');
         return false;
       }
    }else{
@@ -37,3 +38,4 @@ require_once '../core/init.php';
 
   
     
+}

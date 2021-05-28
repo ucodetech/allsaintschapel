@@ -40,7 +40,28 @@ public function fetchBulletin()
       $output .= '<div class="row mb-3">';
         foreach ($row as $bulletin) {
           $output .= '<div class="col-md-4">
-                <a href="detail/bulletin-detail/'.$bulletin->id.'" class="btn btn-primary btn-block" title="View Bulletin" target="_blank">'.pretty_nameDay($bulletin->dateOfService).'</a>
+                <a href="detail/bulletin-detail/'.$bulletin->id.'" class="btn btn-primary btn-block" title="View Bulletin" target="_blank">'.pretty_dates($bulletin->dateOfService).'</a>
+            </div>';
+        }
+      $output .= '</div>';
+
+      return $output;
+  }else{
+    return '<h2 class="text-center">No bulletin yet</h3>';
+  }
+}
+
+public function fetchBulletinfront()
+{
+  $bulletin = $this->_db->get('chapel_bullentin', array('deleted', '=', 0));
+  if ($bulletin->count()) {
+    $row =  $bulletin->results();
+    $output = '';
+
+      $output .= '<div class="row mb-3">';
+        foreach ($row as $bulletin) {
+          $output .= '<div class="col-md-4">
+                <a href="frontlock/bulletin-detail/'.$bulletin->id.'" class="btn btn-primary btn-block" title="View Bulletin" target="_blank">'.pretty_dates($bulletin->dateOfService).'</a>
             </div>';
         }
       $output .= '</div>';

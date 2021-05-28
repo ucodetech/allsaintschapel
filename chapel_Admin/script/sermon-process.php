@@ -236,11 +236,14 @@ if (isset($_POST['action']) && $_POST['action'] == 'recentPost') {
     foreach ($data as $r) {
       $output .= '
       <ul class="list-unstyled m-0">
-      <a href="'.URLROOT.'sermon/read/'.$r->slug_url.'" class="page-link border-0">
+      <a href="'.URLROOT.'sermon/read/'.$r->slug_url.'" class="page-link border-0" style="text-decoration:none;">
         <li class="media">
           <img data-src="'.URLROOT.'images/featured.png" class="img-thumbnail lazy" alt="'.$r->title.'" src="'.URLROOT.'images/featured.png" width="100">
           <div class="media-body ml-2">
             <h6 class="text-info mb-1">'.$r->title.'</h6>
+            <p class="small text-muted m-0">
+             By '.$r->author.'
+            </p>
             <p class="small text-muted m-0">
               '.pretty_dates($r->datePosted).'
             </p>

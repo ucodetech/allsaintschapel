@@ -29,7 +29,7 @@
                 <a class="nav-link page-scroll" href="#message">Messages</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="#request">Request</a>
+                <a class="nav-link page-scroll" href="#bulletin">Bulletin</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link page-scroll" href="#about">About</a>
